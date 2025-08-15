@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+
+@theme {
+  --color-primayBgColor: #f02351;
+  --color-primarytext :oklch(63.7% 0.237 25.331);
+  --color-secondaryBgColor : oklch(88.5% 0.062 18.334);
+  --color-thirdBgColor:oklch(93.6% 0.032 17.717);
+  --color-gray:#282828;
+  
+}
+
+
+/* [#282828] */
