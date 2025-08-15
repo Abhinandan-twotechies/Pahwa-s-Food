@@ -8,7 +8,7 @@ import { addToCart, removeFromCart } from '../features/CART/cartSlice';
 
 function Foods() {
     const { filterdMenu, isBottomSheet, toCheckIsHalf, setIsBottomSheet, setItemToCusTomize } = useContext(MyContext);
-
+ 
     const [isHalf, setIsHalf] = useState(true);
     const [isAll, setIsAll] = useState(true);
     const [isVeg, setIsveg] = useState(false);
