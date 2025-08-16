@@ -7,12 +7,14 @@ import { addToCart, removeFromCart } from '../features/CART/cartSlice';
 
 
 function Foods() {
-    const { filterdMenu, isBottomSheet, toCheckIsHalf, setIsBottomSheet, setItemToCusTomize } = useContext(MyContext);
- 
+    const { filterdMenu, setIsBottomSheet, setItemToCusTomize } = useContext(MyContext);
+    const carts = useSelector(state => state.carts)
+
     const [isHalf, setIsHalf] = useState(true);
     const [isAll, setIsAll] = useState(true);
     const [isVeg, setIsveg] = useState(false);
     const [isNonVeg, setIsNonVeg] = useState(false);
+    const [qty, setQty] = useState(1);
 
     const [menuData, setMenuData] = useState([]);
 
@@ -45,8 +47,14 @@ function Foods() {
         } else {
             dispatch(addToCart(singleItem))
         }
-       
+
     }
+
+
+
+    // function changeQuantity(){
+    //     const item
+    // }
 
 
 
@@ -55,9 +63,9 @@ function Foods() {
         <div className="mt-5 mb-5 mx-2 pb-10">
             <p className="text-primaryText font-semibold text-xl mb-2">Popular</p>
 
-            <div className='bg-white w-full h-[75vh] overflow-scroll mb-10 rounded-2xl shadow-2xl no-scrollbar'>
-                <div className='bg-secondaryBgColor flex justify-between mb-5 z-10 p-2 sticky top-0'>
-                    <div className='text-primarytext font-bold'>
+            <div className='bg-[#fcfcfc] w-full h-auto overflow-scroll mb-10 rounded-2xl  no-scrollbar'>
+                <div className='bg-[wheat] flex justify-between mb-5 z-10 p-2 sticky top-0'>
+                    <div className='text-lightBlack font-bold'>
                         <p className='ml-5 text-lg'>{filterdMenu?.name}</p>
                     </div>
                     <div className=''>
@@ -71,8 +79,8 @@ function Foods() {
                                 type="radio" name="menuFilter" id="all"
                                 className="hidden peer/all" defaultChecked />
                             <label htmlFor="all"
-                                className="px-3 py-1 bg-gray-400 cursor-pointer peer-checked/all:bg-green-600 text-sm text-white font-semibold">
-                                All
+                                className="px-3 py-1 bg-gray-200 cursor-pointer peer-checked/all:bg-primarytext  text-sm text-gray-800 font-semibold">
+                                Both
                             </label>
 
                             <input
@@ -84,7 +92,7 @@ function Foods() {
                                 type="radio" name="menuFilter" id="veg"
                                 className="hidden peer/veg" />
                             <label htmlFor="veg"
-                                className="px-3 py-1 bg-gray-500 cursor-pointer peer-checked/veg:bg-green-600 text-sm text-white font-semibold">
+                                className="px-3 py-1 bg-gray-300 cursor-pointer peer-checked/veg:bg-primarytext text-sm text-gray-800 font-semibold">
                                 Veg
                             </label>
 
@@ -97,7 +105,7 @@ function Foods() {
                                 type="radio" name="menuFilter" id="nonveg"
                                 className="hidden peer/nonveg" />
                             <label htmlFor="nonveg"
-                                className="px-3 py-1 bg-gray-600 cursor-pointer peer-checked/nonveg:bg-green-600 text-sm text-white font-semibold">
+                                className="px-3 py-1 bg-gray-400 cursor-pointer peer-checked/nonveg:bg-primarytext text-sm text-gray-800 font-semibold">
                                 Non-veg
                             </label>
                         </div>
@@ -106,7 +114,7 @@ function Foods() {
 
                 {menuData.length ? menuData?.map((items, idx) => (
                     <div key={idx} className='px-2'>
-                        <div className="box-shadow w-full h-fit flex gap-3 bg-white p-2 rounded-2xl shadow-2xl mb-5">
+                        <div className="box-shadow w-full h-fit flex gap-3 bg-white p-2 rounded-2xl  mb-5">
                             <div className="w-[25%]">
                                 <img src={items.image} className="h-[20vw] w-[25vw] rounded-2xl" alt="" />
                             </div>
@@ -124,26 +132,39 @@ function Foods() {
                                         <span className="text-xl">{items.full}</span>
                                     </div>
 
-                                    {isHalf ? (
-                                        <div className='relative px-4 py-0.5 rounded-md bg-secondaryBgColor hover:text-white items-center'>
+                                    {carts?.find((item) => (item.product_id == items.id))?.quantity >= 1 ? (
+                                        <div className="text-2xl text-gray1 flex gap-1 items-center rounded-md bg-secondaryBgColor">
+                                            <div>
+                                                <GrFormSubtract
+                                                    onClick={() => setQty((qty) => qty - 1)}
+                                                    className="text-primarytext"
+                                                />
+                                            </div>
+                                            <span className="font-semibold text-lg text-primarytext">
+                                                {items.quantity}
+                                            </span>
+                                            <div>
+                                                <GrFormAdd
+                                                    onClick={() => setQty((qty) => qty + 1)}
+                                                    className="text-primarytext"
+                                                />
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <div className="relative px-4 py-0.5 rounded-md bg-primarytext text-lightBlack items-center">
                                             <button
                                                 onClick={() => {
                                                     addCartHandler(items.id);
                                                     setItemToCusTomize(items.id);
-                                                }
-                                                }
-                                                className='font-semibold text-primarytext hover:text-white'>
+                                                }}
+                                                className="font-semibold text-lightBlack hover:text-white"
+                                            >
                                                 ADD
                                             </button>
-                                            <GrFormAdd className='absolute bottom-3 left-11.5 text-primarytext' />
-                                        </div>
-                                    ) : (
-                                        <div className="text-2xl text-gray1 flex gap-1  items-center rounded-md bg-secondaryBgColor">
-                                            <div><p><GrFormSubtract className='text-primarytext' /></p></div>
-                                            <span className="font-semibold text-lg text-primarytext ">0</span>
-                                            <div><p><GrFormAdd className='text-primarytext' /></p></div>
+                                            <GrFormAdd className="absolute bottom-3 left-11.5 text-lightBlack" />
                                         </div>
                                     )}
+
                                 </div>
                             </div>
                         </div>

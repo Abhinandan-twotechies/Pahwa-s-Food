@@ -1,3 +1,4 @@
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -11,7 +12,7 @@
 
 
 .box-shadow {
-  box-shadow: #3c40434d 0 1px 2px, #3c404326 0 2px 6px 2px;
+  box-shadow: #3c40434d 0 1px 2px, #3c404326 0 2px 4px 2px;
 }
 
 .merablur{

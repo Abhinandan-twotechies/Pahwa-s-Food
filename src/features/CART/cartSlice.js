@@ -5,7 +5,8 @@ import {
 
 const initialState = {
     carts: [],
-    totalprice: 0
+    totalprice: 0,
+    quantity: 0
     // console.log(carts);
 }
 
@@ -17,13 +18,25 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state, action) => {
-            const item = {
-                ...action.payload,
-                quantity: 1
+            let data = action.payload;
+            let isHalf = data?.isHalf || false;
+            const existingItemIndex = state.carts.findIndex(
+                (item) => (item.product_id === action.payload.id && item.isHalf == isHalf)
+            );
+            if (existingItemIndex !== -1) {
+                state.carts[existingItemIndex].quantity +=  data?.currentQty || 1;
+            } else {
+                const newItem = {
+                    id: nanoid(),
+                    price: isHalf ? parseFloat(data?.half) : parseFloat(data?.full),
+                    image: data?.image,
+                    quantity: state.quantity +  data?.currentQty|| 1,
+                    product_id: action.payload.id,
+                    title: data?.item,
+                    isHalf: isHalf
+                };
+                state.carts.push(newItem);
             }
-            // console.log(item);
-
-            state.carts.push(item);
         },
         removeFromCart: (state, action) => {
             state.carts = state.carts.filter((item) => {
@@ -41,7 +54,7 @@ export const cartSlice = createSlice({
             if (item) {
                 if (type === 'increase') {
                     item.quantity += 1;
-                } else if (type === 'decrease' && item.quantity > 1) {
+                } else if (type === 'decrease' && item.quantity > 0) {
                     item.quantity -= 1;
                 }
             }
@@ -59,3 +72,36 @@ export const {
     updateTotalPrice
 } = cartSlice.actions;
 export default cartSlice.reducer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   addToCart: (state, action) => {
+//             const existingItemIndex = state.carts.findIndex(
+//                 (item) => item.id === action.payload.id
+//             );
+//             if (existingItemIndex !== -1) {
+//                 state.carts[existingItemIndex].quantity += 1;
+//             } else {
+//                 const newItem = {
+//                     ...action.payload,
+//                     quantity: 1
+//                 };
+//                 state.carts.push(newItem);
+//             }
+//         },

@@ -9,35 +9,23 @@ function Categories() {
     // console.log(menuData);
 
     return (
-        <div>
-            <div id="categories" className="mt-5">
+        <div className='sticky top-0 z-11 bg-primayBgColor' >
+            <div id="categories" className="mt-5 ">
                 <p className="text-gray1 font-semibold text-xl mb-2 mx-2">Categories</p>
 
                 {/* Scrollable container with hidden scrollbar */}
                 <div
                     id="dishes"
-                    className="box-shadow w-full pb-2 flex overflow-x-auto gap-4  p-2 bg-white no-scrollbar"
-                >
-                    {/* <div>
-                        <div
-                            // onClick={() => setCategory(category)}
-                            className="min-w-[25vw] shadow-2xl py-2 rounded-xl flex-shrink-0">
-                            <img
-                                // src={items.image}
-                                className="h-[25vw] w-[25vw] rounded-full object-cover"
-                                alt=""
-                            />
-                            <p className="text-center pt-2 text-gray1 font-semibold">All</p>
-                        </div>
-                    </div> */}
+                    className="box-shadow  w-full pb-2 flex overflow-x-auto gap-4  p-2 bg-[#fcfcfc] no-scrollbar">
+                
                     {Object.entries(menuData).map(([category, items]) => (
-                        <div key={category}>
+                        <div key={category } >
                             <div
                                 onClick={() => setCategory(category)}
-                                className="min-w-[25vw] shadow-2xl py-2 rounded-xl flex-shrink-0">
+                                className="box-shadow min-w-[20vw]  py-2 rounded-xl flex-shrink-0">
                                 <img
                                     src={items.image}
-                                    className="h-[25vw] w-[25vw] rounded-full object-cover"
+                                    className="h-[20vw] w-[20vw] rounded-full object-cover"
                                     alt=""
                                 />
                                 <p className="text-center pt-2 text-gray1 font-semibold">{items.name}</p>

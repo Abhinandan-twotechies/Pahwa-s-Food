@@ -2,11 +2,12 @@
 
 
 @theme {
-  --color-primayBgColor: #f02351;
-  --color-primarytext :oklch(63.7% 0.237 25.331);
+  --color-primayBgColor: #f2bc57;
+  --color-primarytext :#ED9F0E;
   --color-secondaryBgColor : oklch(88.5% 0.062 18.334);
   --color-thirdBgColor:oklch(93.6% 0.032 17.717);
   --color-gray:#282828;
+  --color-lightBlack :#3c3c3c;
   
 }
 
