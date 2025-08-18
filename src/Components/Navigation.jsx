@@ -5,9 +5,8 @@ import { FaIndianRupeeSign } from 'react-icons/fa6';
 import { FaCartShopping } from 'react-icons/fa6';
 import { Outlet, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react'
-import { MyContext } from '../App';
 import logo from '../assets/PK1-removebg-preview.png'
+import logoDark from '../assets/logo-dark.png'
 
 function Navigation() {
     const carts = useSelector(state => state.carts)
@@ -18,8 +17,9 @@ function Navigation() {
             <div id="footer" className="w-full fixed bottom-0 left-0 bg-[wheat] px-5 border border-solid border-primayBgColor py-2 rounded-t-2xl z-10 text-gray1">
                 <div className="flex justify-between items-center  text-2xl font-normal">
                     <div className="w-[35%] flex justify-between">
-                        <img src={logo} alt="" className='h-[30px] w-[30px] bg-primarytext p-1 rounded-full' />
-                        <FaHouse className='text-primarytext' />
+                        <img src={logoDark} alt="" className='h-[30px] w-[30px]' />
+                        <FaHouse className='text-primarytext mr-2' />
+                        
                     </div>
 
 

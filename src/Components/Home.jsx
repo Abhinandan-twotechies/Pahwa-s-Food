@@ -34,7 +34,7 @@ function Home() {
             setCurrentIndex((prevIndex) =>
                 prevIndex === imgData.length - 1 ? 0 : prevIndex + 1
             );
-        }, 2000);
+        }, 4000);
 
         return () => clearInterval(interval);
     }, [imgData.length]);

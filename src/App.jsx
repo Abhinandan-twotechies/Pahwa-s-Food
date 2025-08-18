@@ -10,6 +10,7 @@ import BottomSheet from './Components/BottomSheet';
 import Cart from './Components/Cart';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateTotalPrice } from './features/CART/cartSlice';
+import logoDark from './assets/logo-dark.png';
 
 
 
@@ -79,18 +80,12 @@ function App() {
   if (loading) {
     return (
       <div className="relative h-screen w-screen flex items-center justify-center">
-      <img 
-        src="https://static.vecteezy.com/system/resources/previews/000/464/411/non_2x/kitchen-utensils-seamless-pattern-for-wallpaper-or-print-on-wrapping-paper-and-napkin-vector.jpg"   
-        alt="Loading background"
-        className="absolute inset-0 w-full h-full object-cover opacity-30"
-      />
-      <div className="absolute inset-0 bg-black/40"></div>
+      <div className="absolute inset-0 bg-primarytext/60"></div>
 
-      {/* Loader spinner */}
       <div className="relative z-10 flex flex-col items-center">
-        <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
-        <p className="mt-4 text-white text-lg font-semibold">Loading...</p>
-        <p className='text-xl text-white font-semibold'>Pahwa's Kitchen</p>
+        <img src={logoDark} alt="logo" className='w-[25%] h-[25%] relative' />
+        <div className="w-10 h-10 border-4 border-white border-t-transparent rounded-full animate-spin absolute top-12"></div>
+        <p className=" text-white text-lg font-semibold">Loading...</p>
       </div>
     </div>
     )

@@ -3,7 +3,7 @@ import { GrFormAdd, GrFormSubtract } from "react-icons/gr";
 import { FaIndianRupeeSign } from 'react-icons/fa6';
 import { MyContext } from '../App';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, removeFromCart , updateQuantity } from '../features/CART/cartSlice';
+import { addToCart, removeFromCart, updateQuantity } from '../features/CART/cartSlice';
 
 
 function Foods() {
@@ -51,14 +51,28 @@ function Foods() {
     }
 
 
-function changeQuantity(id, actionType) {
-    const itemInCart = carts.filter((item) => item.product_id == id)
-    dispatch(updateQuantity({
-        id: itemInCart[0].id,
-        type: actionType
-    }));
-}
+    function increaseQuantity(id, actionType) {
+        const itemInCart = carts.filter((item) => item.product_id == id)
+        dispatch(updateQuantity({
+            id: itemInCart[0].id,
+            type: actionType
+        }));
+    }
 
+    function decreaseQuantity(id, actionType) {
+        const itemInCart = carts.find((item) => item.product_id === id);
+        if (itemInCart.quantity < 1) {
+            dispatch(removeFromCart(id));
+        }
+        else {
+            dispatch(updateQuantity({
+                id: itemInCart.id,
+                type: actionType
+            }));
+
+        }
+
+    }
 
 
     return (
@@ -70,7 +84,7 @@ function changeQuantity(id, actionType) {
                     <div className='text-lightBlack font-bold'>
                         <p className='ml-5 text-lg'>{filterdMenu?.name}</p>
                     </div>
-                    <div className=''>
+                    <div className='overflow-hidden'>
                         <div className="inline-flex rounded-md overflow-hidden text-white">
                             <input
                                 onClick={() => {
@@ -107,7 +121,7 @@ function changeQuantity(id, actionType) {
                                 type="radio" name="menuFilter" id="nonveg"
                                 className="hidden peer/nonveg" />
                             <label htmlFor="nonveg"
-                                className="px-3 py-1 bg-white border border border-solid border-primayBgColor cursor-pointer peer-checked/nonveg:bg-primarytext text-sm text-gray-800 font-semibold">
+                                className="px-3 py-1 bg-white border  border-solid border-primayBgColor cursor-pointer peer-checked/nonveg:bg-primarytext text-sm text-gray-800 font-semibold">
                                 Non-veg
                             </label>
                         </div>
@@ -123,8 +137,8 @@ function changeQuantity(id, actionType) {
                             <div className="flex-col w-[70%] pb-2">
                                 <div className="h-[70%]">
                                     <p className="font-semibold text-gray1 text-xl">{items.item}</p>
-                                    <p className="font-normal text-gray-500 text-[14px] leading-[16px]">
-                                        Lorem ipsum dolor sit amet
+                                    <p className="font-normal text-gray-500 text-[12px] ">
+                                        {items.itemDesc || "No description available."}
                                     </p>
                                 </div>
 
@@ -135,20 +149,28 @@ function changeQuantity(id, actionType) {
                                     </div>
 
                                     {carts?.find((item) => (item.product_id == items.id))?.quantity >= 1 ? (
-                                        <div className="text-2xl text-gray1 flex gap-1 items-center rounded-md  bg-primarytext ">
-                                            <div>
+                                        <div className="min-w-[25%] rounded-sm max-h-[30px] bg-primarytext text-xl text-gray1 flex justify-between items-center border border-solid border-primayBgColor  ">
+                                            <div className='w-1/3 items-center flex-1  bg-primarytext'>
                                                 <GrFormSubtract
-                                                   onClick={() => changeQuantity(items.id, 'decrease')}
-                                                    className="text-lightBlack"
+                                                    onClick={() => decreaseQuantity(items.id, 'decrease')}
+                                                    className="text-lightBlack w-full h-full"
                                                 />
                                             </div>
-                                            <span className="font-semibold text-lg text-black">
-                                               {carts.find((item) => item.product_id === items.id)?.quantity}
+                                            <span className="font-semibold text-lg text-lightBlack w-1/3 text-center ">
+                                                <div className='w-full h-full bg-white border border-solid border-primayBgColor '>
+                                                    {carts.find((item) => item.product_id === items.id)?.quantity}
+                                                </div>
                                             </span>
-                                            <div>
+                                            <div className='w-1/3 items-center  bg-primarytext flex-1 '>
                                                 <GrFormAdd
-                                                    onClick={() => changeQuantity(items.id, 'increase')}
-                                                    className="text-lightBlack"
+                                                    onClick={() => {
+                                                        // increaseQuantity(items.id, 'increase')
+                                                        setIsBottomSheet(true);
+                                                        setItemToCusTomize(items.id);
+
+                                                    }
+                                                    }
+                                                    className="text-lightBlack w-full h-full "
                                                 />
                                             </div>
                                         </div>
@@ -163,6 +185,7 @@ function changeQuantity(id, actionType) {
                                             >
                                                 ADD
                                             </button>
+                                           
                                             <GrFormAdd className="absolute bottom-3 left-11.5 text-lightBlack" />
                                         </div>
                                     )}

@@ -7,6 +7,9 @@ import { removeFromCart, updateQuantity, updateTotalPrice } from '../features/CA
 import { FaIndianRupeeSign } from 'react-icons/fa6';
 import { GrFormAdd, GrFormSubtract } from "react-icons/gr";
 import { MyContext } from '../App';
+import logo from '../assets/PK1-removebg-preview.png'
+import { FaHouse } from 'react-icons/fa6';
+import { FaCartShopping } from 'react-icons/fa6';
 
 
 function Cart() {
@@ -39,6 +42,8 @@ function Cart() {
     useEffect(() => {
         dispatch(updateTotalPrice(calcToltalPrice()))
     }, [carts])
+
+    
     // function to send detals on Whatsapp;
     function sendDetailsOnWhatsApp() {
         const phone = '7765826262';
@@ -103,21 +108,21 @@ function Cart() {
                             
                                                 <td className="text-center p-1 ">{item.price}</td>
                                                 <td className="text-center">
-                                                    <div className='ml-2 mr-2 py-0.5 text-gray1  items-center rounded-md bg-secondaryBgColor'>
+                                                    <div className='ml-2 mr-2 text-gray1  items-center border border-solid border-primayBgColor flex '>
                                                         <GrFormSubtract
                                                             onClick={() => descreseQuantity(item.id)}
-                                                            className='inline font-semibold  text-red-500 text-lg' />
-                                                        <span className="font-semibold px-1 text-sm ">{item.quantity}</span>
+                                                            className='inline font-semibold  text-lightBlack text-lg bg-primayBgColor flex-1 h-full' />
+                                                        <span className="font-semibold  text-sm bg-white flex-1">{item.quantity}</span>
                                                         <GrFormAdd
                                                             onClick={() => increaseQuantity(item.id)}
-                                                            className="inline font-semibold   text-green-500 text-lg" />
+                                                            className="inline font-semibold text-lightBlack text-lg bg-primayBgColor flex-1 h-full" />
                                                     </div>
 
                                                 </td>
                                                 <td className="text-center  p-1 text-red-600">
                                                     <MdDelete onClick={() => {
                                                         dispatch(removeFromCart(item.id))
-                                                    }} className='inline text-lg' /></td>
+                                                    }} className='inline text-xl' /></td>
                                             </tr>
 
 
@@ -174,7 +179,36 @@ function Cart() {
                         </div>
                     </div>
                 </div>
+                <div id="footer" className="w-full fixed bottom-0 left-0 bg-[wheat] px-5 border border-solid border-primayBgColor py-2 rounded-t-2xl z-10 text-gray1">
+                                <div className="flex justify-between items-center  text-2xl font-normal">
+                                    <div className="w-[35%] flex justify-between">
+                                        <img src={logo} alt="" className='h-[30px] w-[30px]' />
+                                       <Link to='/'>
+                                        <FaHouse className='text-primarytext' />
+                                       </Link>
+                                        
+                                    </div>
+                
+                
+                                    <div className="w-[35%] text-center bg-primarytext text-primaryText rounded-xl p-1  ">
+                                        <Link to='/cart' className='flex justify-around items-center'>
+                                            <span className="text-lg"><FaIndianRupeeSign className='text-lightBlack' /></span>
+                                            <span className="text-lg font-semibold text-lightBlack">{totalPrice}/-</span>
+                                        </Link>
+                                    </div>
+                
+                                </div>
+                
+                                <Link to='/cart'>
+                                    <div className="text-2xl fixed bottom-[3%] left-[45%] border-[5px] border-primayBgColor  w-[50px] h-[50px] rounded-[50%] bg-white shadow-5xl  flex justify-center items-center">
+                                        <FaCartShopping className='text-primarytext relative' />
+                                        <p className='absolute bottom-6 left-7 text-sm bg-[wheat] border-1 border-primayBgColor font-semibold text-lightBlack px-2.5 py-1 rounded-full'>{carts.length}</p>
+                                    </div>
+                                </Link>
+                
+                </div>
             </div>
+
         </>
     )
 }
