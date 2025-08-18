@@ -35,16 +35,10 @@ function Cart() {
     function calcToltalPrice() {
         const totalPrice = carts.reduce((acc, item) => acc + (item.price * item.quantity), 0);
         return totalPrice;
-
     }
-
     useEffect(() => {
         dispatch(updateTotalPrice(calcToltalPrice()))
     }, [carts])
-
-
-
-
     // function to send detals on Whatsapp;
     function sendDetailsOnWhatsApp() {
         const phone = '7765826262';
@@ -67,18 +61,21 @@ function Cart() {
     return (
         <>
 
-            <div className="w-full">
-                <div className="mb-[100px] shadow-2xl w-full h-screen  bg-secondaryBgColor p-2">
+            <div className="w-full h-[100vh]">
+                <div className="mb-[100px] shadow-2xl w-full h-[100%]  bg-primarytext p-2">
+                   <Link to='/'>
                     <div className="flex items-center">
                         <div
                             className="text-2xl  w-[20px] h-[20px] rounded-[50%] flex justify-center items-center m-3 text-gray1">
 
-                            <Link to='/'>
+                            
                                 <IoChevronBackCircleSharp />
-                            </Link>
+                            
                         </div>
                         <span className=" font-semibold text-xl">Cart</span>
                     </div>
+                    </Link>
+
                     <div className="w-full">
 
                         <table className="text-gray1 w-full bg-white">
@@ -133,7 +130,7 @@ function Cart() {
                                                 <img src="https://www.pngplay.com/wp-content/uploads/7/Cart-Transparent-PNG.png" className='w-[200px] ml-10' alt="" />
                                                 <span className="text-gray-500">No items added</span>
                                                 <Link to='/'>
-                                                    <span className='bg-secondaryBgColor px-3 py-0.5  rounded-md cursor-pointer font-semibold text-primarytext text-sm  '>Add items</span>
+                                                    <span className='bg-primarytext px-4 py-1.5 rounded-md cursor-pointer font-semibold text-lightBlack text-sm  '>Add items</span>
                                                 </Link>
                                             </div>
                                         </td>
@@ -145,7 +142,7 @@ function Cart() {
                         </table>
 
 
-                        <div className="bg-white mt-10 rounded">
+                        <div className="bg-[wheat] mt-10 rounded">
                             <div className="px-3 py-3 text-primaryBg">
                                 <div className="border-b mt-2 mb-2pb-1 border-primaryBg w-full flex justify-between ">
                                     <div className='w-[70%]'>

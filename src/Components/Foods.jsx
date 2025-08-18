@@ -3,7 +3,7 @@ import { GrFormAdd, GrFormSubtract } from "react-icons/gr";
 import { FaIndianRupeeSign } from 'react-icons/fa6';
 import { MyContext } from '../App';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, removeFromCart } from '../features/CART/cartSlice';
+import { addToCart, removeFromCart , updateQuantity } from '../features/CART/cartSlice';
 
 
 function Foods() {
@@ -51,11 +51,13 @@ function Foods() {
     }
 
 
-
-    // function changeQuantity(){
-    //     const item
-    // }
-
+function changeQuantity(id, actionType) {
+    const itemInCart = carts.filter((item) => item.product_id == id)
+    dispatch(updateQuantity({
+        id: itemInCart[0].id,
+        type: actionType
+    }));
+}
 
 
 
@@ -79,7 +81,7 @@ function Foods() {
                                 type="radio" name="menuFilter" id="all"
                                 className="hidden peer/all" defaultChecked />
                             <label htmlFor="all"
-                                className="px-3 py-1 bg-gray-200 cursor-pointer peer-checked/all:bg-primarytext  text-sm text-gray-800 font-semibold">
+                                className="px-3 py-1 bg-white border border-solid border-primayBgColor cursor-pointer peer-checked/all:bg-primarytext  text-sm text-gray-800 font-semibold">
                                 Both
                             </label>
 
@@ -92,7 +94,7 @@ function Foods() {
                                 type="radio" name="menuFilter" id="veg"
                                 className="hidden peer/veg" />
                             <label htmlFor="veg"
-                                className="px-3 py-1 bg-gray-300 cursor-pointer peer-checked/veg:bg-primarytext text-sm text-gray-800 font-semibold">
+                                className="px-3 py-1 bg-white border border-solid border-primayBgColor cursor-pointer peer-checked/veg:bg-primarytext text-sm text-gray-800 font-semibold">
                                 Veg
                             </label>
 
@@ -105,7 +107,7 @@ function Foods() {
                                 type="radio" name="menuFilter" id="nonveg"
                                 className="hidden peer/nonveg" />
                             <label htmlFor="nonveg"
-                                className="px-3 py-1 bg-gray-400 cursor-pointer peer-checked/nonveg:bg-primarytext text-sm text-gray-800 font-semibold">
+                                className="px-3 py-1 bg-white border border border-solid border-primayBgColor cursor-pointer peer-checked/nonveg:bg-primarytext text-sm text-gray-800 font-semibold">
                                 Non-veg
                             </label>
                         </div>
@@ -133,20 +135,20 @@ function Foods() {
                                     </div>
 
                                     {carts?.find((item) => (item.product_id == items.id))?.quantity >= 1 ? (
-                                        <div className="text-2xl text-gray1 flex gap-1 items-center rounded-md bg-secondaryBgColor">
+                                        <div className="text-2xl text-gray1 flex gap-1 items-center rounded-md  bg-primarytext ">
                                             <div>
                                                 <GrFormSubtract
-                                                    onClick={() => setQty((qty) => qty - 1)}
-                                                    className="text-primarytext"
+                                                   onClick={() => changeQuantity(items.id, 'decrease')}
+                                                    className="text-lightBlack"
                                                 />
                                             </div>
-                                            <span className="font-semibold text-lg text-primarytext">
-                                                {items.quantity}
+                                            <span className="font-semibold text-lg text-black">
+                                               {carts.find((item) => item.product_id === items.id)?.quantity}
                                             </span>
                                             <div>
                                                 <GrFormAdd
-                                                    onClick={() => setQty((qty) => qty + 1)}
-                                                    className="text-primarytext"
+                                                    onClick={() => changeQuantity(items.id, 'increase')}
+                                                    className="text-lightBlack"
                                                 />
                                             </div>
                                         </div>

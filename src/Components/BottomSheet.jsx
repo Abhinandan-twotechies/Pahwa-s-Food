@@ -38,11 +38,11 @@ function BottomSheet() {
                 <div className="w-full flex justify-center items-center">
                     <div
                         onClick={() => setIsBottomSheet((prev) => (!prev))}
-                        className="w-[30px] h-[30px]  bg-primayBgColor rounded-[50%] flex items-center justify-center relative bottom-2">
-                        <FaXmark className='text-secondaryBgColor' />
+                        className="w-[40px] h-[40px]  bg-primarytext rounded-[50%] flex items-center justify-center relative bottom-2">
+                        <FaXmark className='text-lightBlack text- font-semibold'  />
                     </div>
                 </div>
-                <div className="h-[100%] bg-thirdBgColor py-5  rounded-t-2xl">
+                <div className="h-[100%] bg-[wheat] py-5  rounded-t-2xl">
                     <div className="p-2">
                         <div className="flex justify-between gap-5 bg-white  box-shadow">
                             <div className="w-[30%] p-2">
@@ -84,17 +84,17 @@ function BottomSheet() {
                         </div>
 
                         <div className="flex justify-between px-2 relative top-[80px] ">
-                            <div className="w-[35%] bg-secondaryBgColor font-bold flex justify-evenly items-center rounded-lg">
+                            <div className="w-[35%] bg-primarytext font-bold flex justify-evenly items-center rounded-lg">
                                 <span><RiSubtractFill
                                     onClick={() => setQty((qty) => qty >= 0 ? qty - 1 : qty)}
-                                    className='text-primarytext font-bold' /></span>
-                                <span className='text-primarytext'>{qty}</span>
-                                <span className='text-primarytext font-bold'><FaPlus onClick={() => setQty((qty) => qty + 1)} /></span>
+                                    className='text-lightBlack font-bold' /></span>
+                                <span className='text-lightBlack'>{qty}</span>
+                                <span className='text-lightBlack font-bold'><FaPlus onClick={() => setQty((qty) => qty + 1)} /></span>
                             </div>
 
-                            <div className="w-[60%] p-2  flex justify-center items-center rounded-lg bg-secondaryBgColor" onClick={() => addItem(data)}>
+                            <div className="w-[60%] p-2  flex justify-center items-center rounded-lg bg-primarytext" onClick={() => addItem(data)}>
                                 <Link to='/cart'>
-                                    <div className='text-primarytext font-bold' >Add item </div>
+                                    <div className='text-lightBlack font-bold' >Add item </div>
                                 </Link>
                             </div>
                         </div>

@@ -19,13 +19,14 @@ function App() {
 
   const carts = useSelector(state => state.carts)
   console.log(carts);
-  
+
 
   // console.log(carts, "ssss");
   const [filterdMenu, setFilteredMenu] = useState([]);
   const [category, setCategory] = useState('Main Course');
   const [isBottomSheet, setIsBottomSheet] = useState(false);
-  const [itemToCustomize, setItemToCusTomize] = useState([])
+  const [itemToCustomize, setItemToCusTomize] = useState([]);
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
   // console.log(itemToCustomize);
@@ -64,6 +65,36 @@ function App() {
   // function descreseQuantity(id) {
   //     dispatch(updateQuantity({ id, type: 'decrease' }));
   // }
+
+
+
+  //  Show loader for 1 sec initially
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000); 
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="relative h-screen w-screen flex items-center justify-center">
+      <img 
+        src="https://static.vecteezy.com/system/resources/previews/000/464/411/non_2x/kitchen-utensils-seamless-pattern-for-wallpaper-or-print-on-wrapping-paper-and-napkin-vector.jpg"   
+        alt="Loading background"
+        className="absolute inset-0 w-full h-full object-cover opacity-30"
+      />
+      <div className="absolute inset-0 bg-black/40"></div>
+
+      {/* Loader spinner */}
+      <div className="relative z-10 flex flex-col items-center">
+        <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+        <p className="mt-4 text-white text-lg font-semibold">Loading...</p>
+        <p className='text-xl text-white font-semibold'>Pahwa's Kitchen</p>
+      </div>
+    </div>
+    )
+  }
 
 
 
