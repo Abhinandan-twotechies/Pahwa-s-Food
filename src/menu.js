@@ -1,15 +1,17 @@
+import {Images} from './images';
+
 export const menuData = {
 
   "Main Course": {
     'name': 'Spicy',
-    'image': 'https://assets.epicurious.com/photos/65c12fd668bf33507544d29c/1:1/w_320%2Cc_limit/Baked-Feta-Pasta-with-Chickpeas_RECIPE.jpg',
+    'image': Images.SpicyMain,
     'data': [{
         id: 18,
         item: "Dal Makhani",
         itemDesc: "Creamy black lentils cooked with butter and spices.",
         half: 140,
         full: 240,
-        image: "https://www.greedygourmet.com/wp-content/uploads/2013/02/dal-makhani-feature.jpg",
+        image: Images.SpicyDalmakhana,
         isVeg: true,
         isPopular: true
       },
@@ -19,7 +21,7 @@ export const menuData = {
         itemDesc: "Yellow lentils tempered with spices and herbs.",
         half: 120,
         full: 200,
-        image: "https://holycowvegan.net/wp-content/uploads/2015/12/indian-dal-tadka.jpg",
+        image: Images.DalTadka,
         isVeg: true,
         isPopular: false
       },
@@ -29,7 +31,7 @@ export const menuData = {
         itemDesc: "Lentils cooked in handi with rustic spices.",
         half: 130,
         full: 220,
-        image: "https://i.timesnowhindi.com/stories/arhar_dal_in_handi_recipe.jpg",
+        image: Images.DalHnadi,
         isVeg: true,
         isPopular: false
       },
@@ -39,7 +41,7 @@ export const menuData = {
         itemDesc: "Paneer with bell peppers in spicy tomato gravy.",
         half: 180,
         full: 290,
-        image: "https://cdn.zeptonow.com/production///tr:w-600,ar-100-100,pr-true,f-auto,q-80/web/recipes/kadai-paneer.png",
+        image: Images.KadaiPaneer,
         isVeg: true,
         isPopular: true
       },
@@ -49,7 +51,7 @@ export const menuData = {
         itemDesc: "Paneer in creamy tomato gravy with spices.",
         half: 180,
         full: 290,
-        image: "https://www.chefkunalkapur.com/wp-content/uploads/2024/03/023A6071-1300x731.jpg?v=1711816319",
+        image: Images.PaneerLababdar,
         isVeg: true,
         isPopular: false
       },
@@ -59,7 +61,7 @@ export const menuData = {
         itemDesc: "Paneer cubes in buttery tomato gravy.",
         half: 180,
         full: 290,
-        image: "https://myfoodstory.com/wp-content/uploads/2021/07/restaurant-style-paneer-butter-masala-2-500x500.jpg",
+        image: Images.PaneerButterMasala,
         isVeg: true,
         isPopular: true
       },
@@ -69,7 +71,7 @@ export const menuData = {
         itemDesc: "Mixed vegetables in spicy, smoky gravy.",
         half: 180,
         full: 360,
-        image: "https://dms.mydukaan.io/original/jpeg/331379/8cff35cc-52d6-42d7-86e5-6054f5da460f.png",
+        image: Images.VegAngaara,
         isVeg: true,
         isPopular: false
       },
@@ -79,7 +81,7 @@ export const menuData = {
         itemDesc: "Paneer with double onions in spicy gravy.",
         half: 160,
         full: 280,
-        image: "https://img.clearcals.com/recipes/a4a781e9aac480efb2dbff3b9c6002c6072daf77/medium.jpg",
+        image: Images.PaneerDoPyaja,
         isVeg: true,
         isPopular: false
       },
@@ -89,7 +91,7 @@ export const menuData = {
         itemDesc: "Mushrooms and onions in spiced gravy.",
         half: 160,
         full: 280,
-        image: "https://dinedelicious.in/wp-content/uploads/2017/11/Mushroom-Masala-2.jpg.webp",
+        image: Images.MushroomMasala,
         isVeg: true,
         isPopular: false
       },
@@ -99,7 +101,7 @@ export const menuData = {
         itemDesc: "Assorted vegetables in mildly spiced gravy.",
         half: 180,
         full: 290,
-        image: "https://sandhyahariharan.co.uk/wp-content/uploads/2025/02/mixed-veg-sabzi-5.jpg",
+        image: Images.MixedVeg,
         isVeg: true,
         isPopular: true
       }
@@ -107,14 +109,14 @@ export const menuData = {
   },
   "Starters": {
     'name': 'Starters',
-    'image': 'https://img.delicious.com.au/SxcErOEi/w759-h506-cfill/del/2015/10/carrot-tzatziki-15562-2.jpg',
+    'image': Images.StartersMain,
     'data': [{
         id: 28,
         item: "Tandoori Chicken",
         itemDesc: "Chicken marinated and roasted in tandoor.",
         half: 170,
         full: 290,
-        image: "https://www.teaforturmeric.com/wp-content/uploads/2024/09/Tandoori-Chicken-Recipe.jpg",
+        image: Images.TandooriChicken,
         isVeg: false,
         isPopular: true
       },
@@ -124,7 +126,7 @@ export const menuData = {
         itemDesc: "Grilled boneless chicken marinated in spices.",
         half: 170,
         full: 290,
-        image: "https://laurenscravings.com/wp-content/uploads/2025/04/chicken-tikka-marinade-scaled.jpg",
+        image: Images.ChickenTikka,
         isVeg: false,
         isPopular: true
       },
@@ -134,7 +136,7 @@ export const menuData = {
         itemDesc: "Creamy, mildly spiced grilled chicken tikka.",
         half: 180,
         full: 290,
-        image: "https://www.misterveg.com/cdn/shop/articles/Afghani_Chicken_Tikka.png?v=1682761091",
+        image: Images.AfghaniChickenTikka,
         isVeg: false,
         isPopular: false
       },
@@ -144,7 +146,7 @@ export const menuData = {
         itemDesc: "Spiced chicken drumsticks roasted for flavor.",
         half: 170,
         full: 290,
-        image: "https://gbdryfruit.pk/cdn/shop/files/Untitleddesign_29_3f49074d-67e1-4107-b1a4-cd4d37867518.webp?v=1738569882",
+        image: Images.Tangri,
         isVeg: false,
         isPopular: false
       },
@@ -154,7 +156,7 @@ export const menuData = {
         itemDesc: "Spicy chicken stir-fried with peppers.",
         half: 190,
         full: 360,
-        image: "https://notacurry.com/wp-content/uploads/2021/01/garlic-chicken-recipe-china-town-style.jpg",
+        image: Images.ChillyChickenDry,
         isVeg: false,
         isPopular: true
       },
@@ -164,7 +166,7 @@ export const menuData = {
         itemDesc: "Chicken in tangy, spicy gravy.",
         half: 190,
         full: 370,
-        image: "https://lahorivillage.com/wp-content/uploads/2024/11/butter-chicken.png",
+        image: Images.ChickenChatkara,
         isVeg: false,
         isPopular: false
       },
@@ -174,7 +176,7 @@ export const menuData = {
         itemDesc: "Chicken tossed with cumin and lemon.",
         half: 190,
         full: 370,
-        image: "https://thecurrymommy.com/wp-content/uploads/2021/09/Hariyali-Jeera-Chicken-Recipe.jpg",
+        image: Images.JeeraChicken,
         isVeg: false,
         isPopular: false
       },
@@ -184,7 +186,7 @@ export const menuData = {
         itemDesc: "Chicken fried with spicy peri peri seasoning.",
         half: 190,
         full: 370,
-        image: "https://www.licious.in/blog/wp-content/uploads/2020/12/Peri-Peri-Chicken-at-home.jpg",
+        image: Images.PeriPeriChicken,
         isVeg: false,
         isPopular: true
       },
@@ -194,7 +196,7 @@ export const menuData = {
         itemDesc: "Chicken pieces deep-fried until crispy.",
         half: 190,
         full: 370,
-        image: "https://www.whiskaffair.com/wp-content/uploads/2021/04/Chicken-Pakora-2-3.jpg",
+        image: Images.ChickenPakora,
         isVeg: false,
         isPopular: false
       },
@@ -204,7 +206,7 @@ export const menuData = {
         itemDesc: "Crispy fried chicken, KFC style.",
         half: null,
         full: 370,
-        image: "https://www.eatthis.com/wp-content/uploads/sites/4//media/images/ext/966368714/kfc-original-chicken-recipe.jpg?quality=82&strip=1",
+        image: Images.KfcChicken,
         isVeg: false,
         isPopular: true
       }
@@ -212,14 +214,14 @@ export const menuData = {
   },
   "Gravy": {
     'name': 'Gravy',
-    'image': 'https://schoolnightvegan.com/wp-content/uploads/2024/09/vegan-mushroom-gravy-6.jpg',
+    'image': Images.GravyMain,
     'data': [{
         id: 38,
         item: "Butter Chicken",
         itemDesc: "Chicken in creamy tomato gravy with butter.",
         half: 300,
         full: 590,
-        image: "https://www.licious.in/blog/wp-content/uploads/2020/10/butter-chicken-.jpg",
+        image: Images.ButterChicken,
         isVeg: false,
         isPopular: true
       },
@@ -229,7 +231,7 @@ export const menuData = {
         itemDesc: "Chicken with minced meat in spicy gravy.",
         half: 300,
         full: 590,
-        image: "https://tse4.mm.bing.net/th/id/OIP.QPyDdaj0Sg7_UE1LMG54kAAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        image: Images.RaraChicken,
         isVeg: false,
         isPopular: false
       },
@@ -239,7 +241,7 @@ export const menuData = {
         itemDesc: "Chicken with bell peppers in thick gravy.",
         half: 300,
         full: 590,
-        image: "https://myfoodstory.com/wp-content/uploads/2021/09/kadai-chicken-1.jpg",
+        image: Images.KadaiChicken,
         isVeg: false,
         isPopular: false
       },
@@ -249,7 +251,7 @@ export const menuData = {
         itemDesc: "Classic chicken curry with aromatic spices.",
         half: 290,
         full: 560,
-        image: "https://www.foodiaq.com/wp-content/uploads/2024/11/Chicken-Curry.jpg",
+        image: Images.ChickenCurry,
         isVeg: false,
         isPopular: false
       },
@@ -259,7 +261,7 @@ export const menuData = {
         itemDesc: "Chicken cooked on tawa with rustic spices.",
         half: 290,
         full: 560,
-        image: "https://www.recipemasters.in/wp-content/uploads/2015/05/DSC_1075.jpg",
+        image: Images.TawaChicken,
         isVeg: false,
         isPopular: false
       }
@@ -267,13 +269,13 @@ export const menuData = {
   },
   "Breads": {
     'name': 'Breads',
-    'image': 'https://media.istockphoto.com/id/1150376593/photo/bread-tandoori-indian-cuisine.jpg?s=612x612&w=0&k=20&c=GGT5LN7G4zLhJTEnP_KcyvYuayi8f1nJcvQwvmj0rCM=',
+    'image': Images.BreadMain,
     'data': [{
         id: 43,
         item: "Tandoori Roti",
         itemDesc: "Whole wheat roti cooked in tandoor.",
         full:'15',
-        image: "https://www.whiskaffair.com/wp-content/uploads/2020/08/Tandoori-Roti-2-3.jpg",
+        image: Images.TanddooriRoti,
         isVeg: true,
         isPopular: true
       },
@@ -282,7 +284,7 @@ export const menuData = {
         item: "Tandoori Butter Roti",
         itemDesc: "Tandoori roti brushed with butter.",
         full: 20,
-        image: "https://www.whiskaffair.com/wp-content/uploads/2023/09/Onion-Naan-2-3.jpg",
+        image: Images.ButterNaan,
         isVeg: true,
         isPopular: false
       },
@@ -291,7 +293,7 @@ export const menuData = {
         item: "Tandoori Cream Roti",
         itemDesc: "Tandoori roti topped with cream.",
         full: 20,
-        image: "https://tandoorijunctionindianrestaurant.com.au/wp-content/uploads/2024/06/butter-roti.jpg",
+        image: Images.TandooriCreamRoti,
         isVeg: true,
         isPopular: false
       },
@@ -300,7 +302,7 @@ export const menuData = {
         item: "Plain Naan",
         itemDesc: "Soft, fluffy Indian bread baked in tandoor.",
         full: 40,
-        image: "https://food.annapurnaderoyal.com/wp-content/uploads/2021/07/plain-naan.jpg",
+        image: Images.PlainNaan,
         isVeg: true,
         isPopular: false
       },
@@ -309,7 +311,7 @@ export const menuData = {
         item: "Butter Naan",
         itemDesc: "Naan brushed with butter for richness.",
         full: 50,
-        image: "https://allwaysdelicious.com/wp-content/uploads/2022/04/garlic-butter-naan-4.jpg",
+        image: Images.ButterNaan,
         isVeg: true,
         isPopular: true
       },
@@ -318,7 +320,7 @@ export const menuData = {
         item: "Garlic Naan",
         itemDesc: "Naan topped with garlic and baked.",
         full: 50,
-        image: "https://hostthetoast.com/wp-content/uploads/2018/08/naan-202-320x320-1.jpg",
+        image: Images.GarlicNaan,
         isVeg: true,
         isPopular: true
       },
@@ -327,7 +329,7 @@ export const menuData = {
         item: "Lacha Paratha",
         itemDesc: "Layered, flaky paratha cooked on tawa.",
         full: 50,
-        image: "https://rotimatic.com/cdn/shop/articles/Lachcha_Paratha_500x500.webp?v=1710242636",
+        image: Images.LachhaParatha,
         isVeg: true,
         isPopular: false
       },
@@ -336,7 +338,7 @@ export const menuData = {
         item: "Hari Mirchi Paratha",
         itemDesc: "Paratha stuffed with green chilies.",
         full: 60,
-        image: "https://i.ytimg.com/vi/J40Odgy_SOk/maxresdefault.jpg",
+        image: Images.HarimirchParathe,
         isVeg: true,
         isPopular: false
       }
@@ -344,13 +346,13 @@ export const menuData = {
   },
   "Snacks": {
     'name': 'Snakcs',
-    'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6debDOc4TEcfcz5z_n2QtH_9LCCS_kHBCR-VHNIRm6LT8xIQJkYZX3E9VKG0DkuOINyM&usqp=CAU',
+    'image': Images.SnacksMain,
     'data': [{
         id: 1,
         item: "Aloo Tikki Burger",
         itemDesc: "Burger with crispy potato patty and veggies.",
         full: 50,
-        image: "https://spicecravings.com/wp-content/uploads/2022/02/Aloo-Tikki-Burger-LS.jpg",
+        image: Images.AlooTikkiBurger,
         isVeg: true,
         isPopular: true
       },
@@ -359,7 +361,7 @@ export const menuData = {
         item: "Noodle Burger",
         itemDesc: "Burger with noodle patty and spicy sauces.",
         full: 60,
-        image: "https://tikme-oms.s3.ca-central-1.amazonaws.com/60e5fb78cebda300ea20a783/Junction-50.jpg",
+        image: Images.NoodleBurger,
         isVeg: true,
         isPopular: false
       },
@@ -368,7 +370,7 @@ export const menuData = {
         item: "Cream Burger",
         itemDesc: "Burger with creamy sauce and fresh veggies.",
         full: 70,
-        image: "https://paprikapie.com/wp-content/uploads/2024/09/4beedcfb58e73996cc8a607afeaf3407.jpg",
+        image: Images.CreamBurger,
         isVeg: true,
         isPopular: false
       },
@@ -377,7 +379,7 @@ export const menuData = {
         item: "Cheese Burger",
         itemDesc: "Burger with melted cheese and juicy patty.",
         full: 70,
-        image: "https://assets.epicurious.com/photos/5c745a108918ee7ab68daf79/1:1/w_2503,h_2503,c_limit/Smashburger-recipe-120219.jpg",
+        image: Images.CheeseBurger,
         isVeg: false,
         isPopular: true
       },
@@ -386,7 +388,7 @@ export const menuData = {
         item: "Double Tikki Burger",
         itemDesc: "Burger with two crispy potato patties.",
         full: 70,
-        image: "https://app.mgmtechnologies.au/wp-content/uploads/2024/02/p61.jpg",
+        image: Images.DoubleTikkiBurger,
         isVeg: true,
         isPopular: false
       },
@@ -396,7 +398,7 @@ export const menuData = {
         itemDesc: "Stir-fried noodles with vegetables and sauces.",
         half: 80,
         full: 150,
-        image: "https://www.ohmyveg.co.uk/wp-content/uploads/2024/08/hakka-noodles.jpg",
+        image: Images.VegNoodles,
         isVeg: true,
         isPopular: true
       },
@@ -406,7 +408,7 @@ export const menuData = {
         itemDesc: "Fried vegetable balls in spicy sauce.",
         half: 80,
         full: 150,
-        image: "https://billusfood.com/wp-content/uploads/2025/02/13-1.png",
+        image: Images.SnacksMunChoorian,
         isVeg: false,
         isPopular: true
       },
@@ -416,7 +418,7 @@ export const menuData = {
         itemDesc: "Crispy rolls stuffed with veggies.",
         half: 80,
         full: 100,
-        image: "https://cdn3.didevelop.com/public/product_images/2386/533_cbdbd3d9d2a3191dfb1f7b3b5c32ecf5.jpg",
+        image: Images.SpringRoll,
         isVeg: true,
         isPopular: false
       },
@@ -426,7 +428,7 @@ export const menuData = {
         itemDesc: "Spicy, crispy snack balls with mixed ingredients.",
         half: 60,
         full: 100,
-        image: "https://s3-ap-south-1.amazonaws.com/betterbutterbucket-silver/preetika-verma20181019191918819.jpeg",
+        image: Images.Bullets,
         isVeg: false,
         isPopular: false
       },
@@ -435,7 +437,7 @@ export const menuData = {
         item: "Cheese Corn Roll",
         itemDesc: "Roll stuffed with cheese and corn.",
         full: 180,
-        image: "https://www.freshezy.in/cdn/shop/products/3peppercorncheeseroll.jpg?v=1679396745&width=1946",
+        image: Images.CheeseCornRoll,
         isVeg: true,
         isPopular: true
       },
@@ -445,7 +447,7 @@ export const menuData = {
         itemDesc: "Paneer cubes marinated and grilled.",
         half: 160,
         full: 290,
-        image: "https://s-media-cache-ak0.pinimg.com/originals/dd/30/f0/dd30f03c659a53612159774c3f8a4f60.jpg",
+        image: Images.PaneerTikka,
         isVeg: true,
         isPopular: true
       },
@@ -455,7 +457,7 @@ export const menuData = {
         itemDesc: "Paneer or cheese cubes in chili sauce.",
         half: 160,
         full: 290,
-        image: "https://gadegal-homestay.himwebx.com/wp-content/uploads/2023/10/chilli-paneer.jpg",
+        image: Images.CheeseChilli,
         isVeg: true,
         isPopular: false
       },
@@ -465,7 +467,7 @@ export const menuData = {
         itemDesc: "Mushrooms marinated and grilled for smoky taste.",
         half: 120,
         full: 200,
-        image: "https://www.cookwithmanali.com/wp-content/uploads/2019/07/Mushroom-Tikka-500x500.jpg",
+        image: Images.MushroomTikka,
         isVeg: true,
         isPopular: false
       },
@@ -475,7 +477,7 @@ export const menuData = {
         itemDesc: "Soya chaap in creamy, mildly spiced gravy.",
         half: 120,
         full: 200,
-        image: "https://basketoffrozen.com/wp-content/uploads/2024/11/1000060429.jpg",
+        image: Images.MalaiChap,
         isVeg: true,
         isPopular: false
       },
@@ -485,7 +487,7 @@ export const menuData = {
         itemDesc: "Soya chaap in tangy achari spices.",
         half: 80,
         full: 150,
-        image: "https://kissanrestaurant.com/wp-content/uploads/2024/04/achari-chaap-tikka.jpg",
+        image: Images.AchariChaapTikka,
         isVeg: true,
         isPopular: false
       },
@@ -495,7 +497,7 @@ export const menuData = {
         itemDesc: "Crispy potato fries, lightly salted.",
         half: 100,
         full: 180,
-        image: "https://www.thespruceeats.com/thmb/6Ijd0M6aeo2rDxbrwvZ-CUFtk44=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/how-to-make-homemade-french-fries-2215971-step-08-00f9e1627d0541a89ece39e2ec72bd7d.jpg",
+        image: Images.FrenchFries,
         isVeg: true,
         isPopular: true
       },
@@ -505,7 +507,7 @@ export const menuData = {
         itemDesc: "Crispy fries tossed in peri peri seasoning.",
         half: 100,
         full: 180,
-        image: "https://rppizzeria.com/web/image/product.template/206/image_1024?unique=142cabe",
+        image: Images.FrenchFriesPeriPeri,
         isVeg: false,
         isPopular: true
       }

@@ -148,33 +148,7 @@ function Foods() {
                                         <span className="text-xl">{items.full}</span>
                                     </div>
 
-                                    {carts?.find((item) => (item.product_id == items.id))?.quantity >= 1 ? (
-                                        <div className="min-w-[25%] rounded-sm max-h-[30px] bg-primarytext text-xl text-gray1 flex justify-between items-center border border-solid border-primayBgColor  ">
-                                            <div className='w-1/3 items-center flex-1  bg-primarytext'>
-                                                <GrFormSubtract
-                                                    onClick={() => decreaseQuantity(items.id, 'decrease')}
-                                                    className="text-lightBlack w-full h-full"
-                                                />
-                                            </div>
-                                            <span className="font-semibold text-lg text-lightBlack w-1/3 text-center ">
-                                                <div className='w-full h-full bg-white border border-solid border-primayBgColor '>
-                                                    {carts.find((item) => item.product_id === items.id)?.quantity}
-                                                </div>
-                                            </span>
-                                            <div className='w-1/3 items-center  bg-primarytext flex-1 '>
-                                                <GrFormAdd
-                                                    onClick={() => {
-                                                        // increaseQuantity(items.id, 'increase')
-                                                        setIsBottomSheet(true);
-                                                        setItemToCusTomize(items.id);
-
-                                                    }
-                                                    }
-                                                    className="text-lightBlack w-full h-full "
-                                                />
-                                            </div>
-                                        </div>
-                                    ) : (
+                                    {carts?.find((item) => (item.product_id == items.id))?.isHalf ? (
                                         <div className="relative px-4 py-0.5 rounded-md bg-primarytext text-lightBlack items-center">
                                             <button
                                                 onClick={() => {
@@ -185,11 +159,54 @@ function Foods() {
                                             >
                                                 ADD
                                             </button>
-                                           
+
                                             <GrFormAdd className="absolute bottom-3 left-11.5 text-lightBlack" />
                                         </div>
-                                    )}
+                                    ) : (
+                                        (carts?.find((item) => (item.product_id == items.id))?.quantity >= 1 ? (
+                                            <div className="min-w-[25%] rounded-sm max-h-[30px] bg-primarytext text-xl text-gray1 flex justify-between items-center border border-solid border-primayBgColor  ">
+                                                <div className='w-1/3 items-center flex-1  bg-primarytext'>
+                                                    <GrFormSubtract
+                                                        onClick={() => decreaseQuantity(items.id, 'decrease')}
+                                                        className="text-lightBlack w-full h-full"
+                                                    />
+                                                </div>
+                                                <span className="font-semibold text-lg text-lightBlack w-1/3 text-center ">
+                                                    <div className='w-full h-full bg-white border border-solid border-primayBgColor '>
+                                                        {carts.find((item) => item.product_id === items.id)?.quantity}
+                                                    </div>
+                                                </span>
+                                                <div className='w-1/3 items-center  bg-primarytext flex-1 '>
+                                                    <GrFormAdd
+                                                        onClick={() => {
+                                                            // increaseQuantity(items.id, 'increase')
+                                                            setIsBottomSheet(true);
+                                                            setItemToCusTomize(items.id);
 
+                                                        }
+                                                        }
+                                                        className="text-lightBlack w-full h-full "
+                                                    />
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <div className="relative px-4 py-0.5 rounded-md bg-primarytext text-lightBlack items-center">
+                                                <button
+                                                    onClick={() => {
+                                                        addCartHandler(items.id);
+                                                        setItemToCusTomize(items.id);
+                                                    }}
+                                                    className="font-semibold text-lightBlack hover:text-white"
+                                                >
+                                                    ADD
+                                                </button>
+
+                                                <GrFormAdd className="absolute bottom-3 left-11.5 text-lightBlack" />
+                                            </div>
+                                        ))
+
+                                    )
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -213,3 +230,30 @@ function Foods() {
 }
 
 export default Foods;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

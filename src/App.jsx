@@ -69,25 +69,24 @@ function App() {
 
 
 
-  //  Show loader for 1 sec initially
+  // Loader
   useEffect(() => {
-    const timer = setTimeout(() => {
+    if (menuData && Object.keys(menuData).length > 0) {
       setLoading(false);
-    }, 1000); 
-    return () => clearTimeout(timer);
+    }
   }, []);
 
   if (loading) {
     return (
       <div className="relative h-screen w-screen flex items-center justify-center">
-      <div className="absolute inset-0 bg-primarytext/60"></div>
+        <div className="absolute inset-0 bg-primarytext/60"></div>
 
-      <div className="relative z-10 flex flex-col items-center">
-        <img src={logoDark} alt="logo" className='w-[25%] h-[25%] relative' />
-        <div className="w-10 h-10 border-4 border-white border-t-transparent rounded-full animate-spin absolute top-12"></div>
-        <p className=" text-white text-lg font-semibold">Loading...</p>
+        <div className="relative z-10 flex flex-col items-center">
+          <img src={logoDark} alt="logo" className='w-[25%] h-[25%] relative' />
+          <div className="w-10 h-10 border-4 border-white border-t-transparent rounded-full animate-spin absolute top-12"></div>
+          <p className=" text-white text-lg font-semibold">Loading...</p>
+        </div>
       </div>
-    </div>
     )
   }
 
