@@ -5,19 +5,19 @@ import { FaIndianRupeeSign } from 'react-icons/fa6';
 import { FaCartShopping } from 'react-icons/fa6';
 import { Outlet, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import logo from '../assets/PK1-removebg-preview.png'
 import logoDark from '../assets/logo-dark.png'
 
 function Navigation() {
     const carts = useSelector(state => state.carts)
     const totalPrice = useSelector(state => state.totalprice)
 
+
     return (
         <>
-            <div id="footer" className="w-full fixed bottom-0 left-0 bg-[wheat] px-5 border border-solid border-primayBgColor py-2 rounded-t-2xl z-10 text-gray1">
+            <div id="footer" className="w-[clamp(375px,100%,1024px)] fixed bottom-0 left-0 lg:left-[calc(50%-512px)] bg-[wheat] px-5 border border-solid border-primayBgColor py-2 rounded-t-2xl z-10 text-gray1">
                 <div className="flex justify-between items-center  text-2xl font-normal">
                     <div className="w-[35%] flex justify-between">
-                        <img src={logoDark} alt="" className='h-[30px] w-[30px]' />
+                        <img src={logoDark} alt="" className='h-[35px] w-[35px]' />
                         <FaHouse className='text-primarytext mr-2' />
                         
                     </div>

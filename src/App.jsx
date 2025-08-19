@@ -19,20 +19,12 @@ export const MyContext = createContext();
 function App() {
 
   const carts = useSelector(state => state.carts)
-  console.log(carts);
-
-
-  // console.log(carts, "ssss");
   const [filterdMenu, setFilteredMenu] = useState([]);
   const [category, setCategory] = useState('Main Course');
   const [isBottomSheet, setIsBottomSheet] = useState(false);
   const [itemToCustomize, setItemToCusTomize] = useState([]);
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
-
-  // console.log(itemToCustomize);
-
-
 
   useEffect(() => {
     setFilteredMenu(menuData?.[category] || []);
@@ -45,7 +37,6 @@ function App() {
 
   }
 
-
   useEffect(() => {
     dispatch(updateTotalPrice(calcToltalPrice()))
   }, [carts])
@@ -55,26 +46,13 @@ function App() {
     document.body.style.overflow = isBottomSheet ? "hidden" : "";
   }, [isBottomSheet])
 
-
-
-  // function to increase Quantity  
-  // function increaseQuantity(id) {
-  //     dispatch(updateQuantity({ id, type: 'increase' }));
-  // }
-
-  // // function to decrease quantity 
-  // function descreseQuantity(id) {
-  //     dispatch(updateQuantity({ id, type: 'decrease' }));
-  // }
-
-
-
   // Loader
   useEffect(() => {
     if (menuData && Object.keys(menuData).length > 0) {
       setLoading(false);
     }
   }, []);
+
 
   if (loading) {
     return (
@@ -90,13 +68,9 @@ function App() {
     )
   }
 
-
-
-
-
   return (
     <>
-      <div className=' no-scrollbar bg-primayBgColor' >
+      <div className=' no-scrollbar bg-primarytext w-[clamp(375px,100%,1024px)] mx-auto' >
         <MyContext.Provider value={{ menuData, setCategory, filterdMenu, isBottomSheet, setIsBottomSheet, itemToCustomize, setItemToCusTomize }}>
           <Home />
           <Categories />

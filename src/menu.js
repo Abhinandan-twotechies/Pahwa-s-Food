@@ -1,7 +1,8 @@
-import {Images} from './images';
+import {
+  Images
+} from './images';
 
 export const menuData = {
-
   "Main Course": {
     'name': 'Spicy',
     'image': Images.SpicyMain,
@@ -274,7 +275,7 @@ export const menuData = {
         id: 43,
         item: "Tandoori Roti",
         itemDesc: "Whole wheat roti cooked in tandoor.",
-        full:'15',
+        full: '15',
         image: Images.TanddooriRoti,
         isVeg: true,
         isPopular: true

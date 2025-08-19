@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../assets/PK1-removebg-preview.png'
 
-
-
 function Home() {
     const imgData = [
         {

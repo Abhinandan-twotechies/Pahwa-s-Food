@@ -10,12 +10,13 @@ function Foods() {
     const { filterdMenu, setIsBottomSheet, setItemToCusTomize } = useContext(MyContext);
     const carts = useSelector(state => state.carts)
 
-    const [isHalf, setIsHalf] = useState(true);
+
     const [isAll, setIsAll] = useState(true);
     const [isVeg, setIsveg] = useState(false);
     const [isNonVeg, setIsNonVeg] = useState(false);
-    const [qty, setQty] = useState(1);
 
+
+    // Filtered menu data based on selected category
     const [menuData, setMenuData] = useState([]);
 
     useEffect(() => {
@@ -59,20 +60,21 @@ function Foods() {
         }));
     }
 
+
     function decreaseQuantity(id, actionType) {
         const itemInCart = carts.find((item) => item.product_id === id);
-        if (itemInCart.quantity < 1) {
-            dispatch(removeFromCart(id));
+        if (itemInCart.quantity == 1) {
+            dispatch(removeFromCart(itemInCart.id));
         }
         else {
             dispatch(updateQuantity({
                 id: itemInCart.id,
                 type: actionType
             }));
-
         }
-
     }
+
+
 
 
     return (
@@ -134,6 +136,7 @@ function Foods() {
                             <div className="w-[25%]">
                                 <img src={items.image} className="h-[20vw] w-[25vw] rounded-2xl" alt="" />
                             </div>
+
                             <div className="flex-col w-[70%] pb-2">
                                 <div className="h-[70%]">
                                     <p className="font-semibold text-gray1 text-xl">{items.item}</p>
@@ -143,17 +146,33 @@ function Foods() {
                                 </div>
 
                                 <div className="w-full flex justify-between items-center">
-                                    <div className="font-semibold flex items-center">
-                                        <FaIndianRupeeSign />
-                                        <span className="text-xl">{items.full}</span>
+                                    <div className="font-semibold flex items-center justify-between  w-full">
+                                        <div className='flex items-center justify-center ml-2 w-[30%]'>
+
+                                            <FaIndianRupeeSign />
+                                            <span className="text-xl">{items.full}</span>
+                                        </div>
+                                        {items?.half ? (() => {
+                                            const itemInCart = carts?.filter(cartItem => cartItem.product_id === items.id) || [];
+                                            const halfQty = itemInCart.find(ci => ci.isHalf)?.quantity || 0;
+                                            const fullQty = itemInCart.find(ci => !ci.isHalf)?.quantity || 0;
+
+                                            return (
+                                                <div className='flex items-center justify-evenly ml-2 w-[65%]'>
+                                                    <p className='text-xs text-gray-400'>Half: {halfQty}</p>
+                                                    <p className='text-xs text-gray-400'>Full: {fullQty}</p>
+                                                </div>
+                                            );
+                                        })() : null}
                                     </div>
 
-                                    {carts?.find((item) => (item.product_id == items.id))?.isHalf ? (
+                                    {(items?.half) ? (
                                         <div className="relative px-4 py-0.5 rounded-md bg-primarytext text-lightBlack items-center">
                                             <button
                                                 onClick={() => {
                                                     addCartHandler(items.id);
                                                     setItemToCusTomize(items.id);
+
                                                 }}
                                                 className="font-semibold text-lightBlack hover:text-white"
                                             >
@@ -164,7 +183,7 @@ function Foods() {
                                         </div>
                                     ) : (
                                         (carts?.find((item) => (item.product_id == items.id))?.quantity >= 1 ? (
-                                            <div className="min-w-[25%] rounded-sm max-h-[30px] bg-primarytext text-xl text-gray1 flex justify-between items-center border border-solid border-primayBgColor  ">
+                                            <div className="min-w-[25%]  max-h-[30px] bg-primarytext text-xl text-gray1 flex justify-between items-center border border-solid border-primayBgColor  ">
                                                 <div className='w-1/3 items-center flex-1  bg-primarytext'>
                                                     <GrFormSubtract
                                                         onClick={() => decreaseQuantity(items.id, 'decrease')}
@@ -179,9 +198,7 @@ function Foods() {
                                                 <div className='w-1/3 items-center  bg-primarytext flex-1 '>
                                                     <GrFormAdd
                                                         onClick={() => {
-                                                            // increaseQuantity(items.id, 'increase')
-                                                            setIsBottomSheet(true);
-                                                            setItemToCusTomize(items.id);
+                                                            increaseQuantity(items.id, 'increase')
 
                                                         }
                                                         }
@@ -204,7 +221,6 @@ function Foods() {
                                                 <GrFormAdd className="absolute bottom-3 left-11.5 text-lightBlack" />
                                             </div>
                                         ))
-
                                     )
                                     }
                                 </div>

@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom';
 import { removeFromCart, updateQuantity, updateTotalPrice } from '../features/CART/cartSlice';
 import { FaIndianRupeeSign } from 'react-icons/fa6';
 import { GrFormAdd, GrFormSubtract } from "react-icons/gr";
-import { MyContext } from '../App';
-import logo from '../assets/PK1-removebg-preview.png'
+import logoDark from '../assets/logo-dark.png'
 import { FaHouse } from 'react-icons/fa6';
 import { FaCartShopping } from 'react-icons/fa6';
 
@@ -26,15 +25,16 @@ function Cart() {
     // function to decrease quantity 
     function descreseQuantity(id) {
         const item = carts.find((item) => item.id === id);
+        
         if (item.quantity === 1) {
             dispatch(removeFromCart(id));
         }
-        else{
+        else {
             dispatch(updateQuantity({ id, type: 'decrease' }));
         }
     }
 
-
+    // function to calculate total price
     function calcToltalPrice() {
         const totalPrice = carts.reduce((acc, item) => acc + (item.price * item.quantity), 0);
         return totalPrice;
@@ -43,14 +43,14 @@ function Cart() {
         dispatch(updateTotalPrice(calcToltalPrice()))
     }, [carts])
 
-    
+
     // function to send detals on Whatsapp;
     function sendDetailsOnWhatsApp() {
         const phone = '7765826262';
         const greeting = 'Thanks for shopping with us! 🛍️\n\nHere are your order details:\n';
 
         const cartDetails = carts.map((item, index) => {
-            return `${index + 1}. ${item.isHalf?item.title+"-half":item.title} : ${item.quantity}`;
+            return `${index + 1}. ${item.isHalf ? item.title + "-half" : item.title} : ${item.quantity}`;
         }).join('\n');
 
         console.log(cartDetails);
@@ -68,17 +68,17 @@ function Cart() {
 
             <div className="w-full h-[100vh]">
                 <div className="mb-[100px] shadow-2xl w-full h-[100%]  bg-primarytext p-2">
-                   <Link to='/'>
-                    <div className="flex items-center">
-                        <div
-                            className="text-2xl  w-[20px] h-[20px] rounded-[50%] flex justify-center items-center m-3 text-gray1">
+                    <Link to='/'>
+                        <div className="flex items-center">
+                            <div
+                                className="text-2xl  w-[20px] h-[20px] rounded-[50%] flex justify-center items-center m-3 text-gray1">
 
-                            
+
                                 <IoChevronBackCircleSharp />
-                            
+
+                            </div>
+                            <span className=" font-semibold text-xl">Cart</span>
                         </div>
-                        <span className=" font-semibold text-xl">Cart</span>
-                    </div>
                     </Link>
 
                     <div className="w-full">
@@ -101,11 +101,11 @@ function Cart() {
                                             <tr className="text-[14px] " key={item.id}>
                                                 <td className="text-center  p-1 py-1 flex items-center justify-center"><img src={item.image}
                                                     className="h-[clamp(40px,10.6vw,80px)] w-[clamp(40px,10.6vw,80px)]" alt="" /></td>
-                                                    {
-                                                        item.isHalf?<td className="text-center p-1 font-semibold leading-[16px] text-[14px]">{item.title}<span className='text-[13px] text-gray-400'> Half</span></td> : 
+                                                {
+                                                    item.isHalf ? <td className="text-center p-1 font-semibold leading-[16px] text-[14px]">{item.title}<span className='text-[13px] text-gray-400'> Half</span></td> :
                                                         <td className="text-center  p-1 font-semibold leading-[16px] text-[14px]">{item.title}</td>
-                                                    }
-                            
+                                                }
+
                                                 <td className="text-center p-1 ">{item.price}</td>
                                                 <td className="text-center">
                                                     <div className='ml-2 mr-2 text-gray1  items-center border border-solid border-primayBgColor flex '>
@@ -180,32 +180,30 @@ function Cart() {
                     </div>
                 </div>
                 <div id="footer" className="w-full fixed bottom-0 left-0 bg-[wheat] px-5 border border-solid border-primayBgColor py-2 rounded-t-2xl z-10 text-gray1">
-                                <div className="flex justify-between items-center  text-2xl font-normal">
-                                    <div className="w-[35%] flex justify-between">
-                                        <img src={logo} alt="" className='h-[30px] w-[30px]' />
-                                       <Link to='/'>
-                                        <FaHouse className='text-primarytext' />
-                                       </Link>
-                                        
-                                    </div>
-                
-                
-                                    <div className="w-[35%] text-center bg-primarytext text-primaryText rounded-xl p-1  ">
-                                        <Link to='/cart' className='flex justify-around items-center'>
-                                            <span className="text-lg"><FaIndianRupeeSign className='text-lightBlack' /></span>
-                                            <span className="text-lg font-semibold text-lightBlack">{totalPrice}/-</span>
-                                        </Link>
-                                    </div>
-                
-                                </div>
-                
-                                <Link to='/cart'>
-                                    <div className="text-2xl fixed bottom-[3%] left-[45%] border-[5px] border-primayBgColor  w-[50px] h-[50px] rounded-[50%] bg-white shadow-5xl  flex justify-center items-center">
-                                        <FaCartShopping className='text-primarytext relative' />
-                                        <p className='absolute bottom-6 left-7 text-sm bg-[wheat] border-1 border-primayBgColor font-semibold text-lightBlack px-2.5 py-1 rounded-full'>{carts.length}</p>
-                                    </div>
-                                </Link>
-                
+                    <div className="flex justify-between items-center  text-2xl font-normal">
+                        <div className="w-[35%] flex justify-between">
+                            <img src={logoDark} alt="" className='h-[35px] w-[35px]' />
+                            <Link to='/'>
+                                <FaHouse className='text-primarytext mr-2' />
+                            </Link>
+
+                        </div>
+                        <div className="w-[35%] text-center bg-primarytext text-primaryText rounded-xl p-1  ">
+                            <Link to='/cart' className='flex justify-around items-center'>
+                                <span className="text-lg"><FaIndianRupeeSign className='text-lightBlack' /></span>
+                                <span className="text-lg font-semibold text-lightBlack">{totalPrice}/-</span>
+                            </Link>
+                        </div>
+
+                    </div>
+
+                    <Link to='/cart'>
+                        <div className="text-2xl fixed bottom-[3%] left-[45%] border-[5px] border-primayBgColor  w-[50px] h-[50px] rounded-[50%] bg-white shadow-5xl  flex justify-center items-center">
+                            <FaCartShopping className='text-primarytext relative' />
+                            <p className='absolute bottom-6 left-7 text-sm bg-[wheat] border-1 border-primayBgColor font-semibold text-lightBlack px-2.5 py-1 rounded-full'>{carts.length}</p>
+                        </div>
+                    </Link>
+
                 </div>
             </div>
 

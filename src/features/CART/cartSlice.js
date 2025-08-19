@@ -24,13 +24,13 @@ export const cartSlice = createSlice({
                 (item) => (item.product_id === action.payload.id && item.isHalf == isHalf)
             );
             if (existingItemIndex !== -1) {
-                state.carts[existingItemIndex].quantity +=  data?.currentQty || 1;
+                state.carts[existingItemIndex].quantity = data?.currentQty || 1;
             } else {
                 const newItem = {
                     id: nanoid(),
                     price: isHalf ? parseFloat(data?.half) : parseFloat(data?.full),
                     image: data?.image,
-                    quantity: state.quantity +  data?.currentQty|| 1,
+                    quantity:  data?.currentQty || 1,
                     product_id: action.payload.id,
                     title: data?.item,
                     isHalf: isHalf
@@ -51,6 +51,7 @@ export const cartSlice = createSlice({
             } = action.payload;
 
             const item = state.carts.find((item) => item.id === id);
+            
             if (item) {
                 if (type === 'increase') {
                     item.quantity += 1;
