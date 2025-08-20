@@ -2,14 +2,13 @@ import { useContext } from 'react';
 import { MyContext } from '../App';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateRecentVisitedCategory } from '../features/CART/cartSlice';
-// import{} from ''
 
 function Categories() {
     const dispatch = useDispatch();
 
     const { menuData, setCategory, FocusInput } = useContext(MyContext);
     const recentVisitedCategory = useSelector(state => state.recent_visited_category)
-    console.log(recentVisitedCategory);
+    // console.log(recentVisitedCategory);
 
 
     return (

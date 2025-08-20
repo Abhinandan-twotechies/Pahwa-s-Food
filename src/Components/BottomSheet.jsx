@@ -74,7 +74,7 @@ function BottomSheet() {
 
                     <div className="w-full flex-col  p-5   gap-20 mt-2 text-primaryText ">
                         <div className='flex flex-col justify-center items-center '>
-                            <div className="flex justify-between w-[90%] items-center p-1 border-b border-dashed">
+                            <div className="flex justify-between w-[90%] items-center p-1 border-b border-gray-400 border-dashed">
                                 <div className='w-[70%]'><p className='font-semibold'>Half :</p></div>
                                 <div className=' flex items-center justify-between w-[20%] text-xl'>
                                     <FaIndianRupeeSign className='text-lg' />

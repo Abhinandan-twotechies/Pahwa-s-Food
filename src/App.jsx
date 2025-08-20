@@ -58,7 +58,7 @@ function App() {
 
   function FocusInput() {
     if (inputRef.current) {
-      const yOffset = -90; // adjust this so content is not cut
+    const yOffset = +10;
     const y = inputRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
     window.scrollTo({ top: y, behavior: "smooth" });

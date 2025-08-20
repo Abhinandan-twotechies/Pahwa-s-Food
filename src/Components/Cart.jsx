@@ -102,7 +102,7 @@ function Cart() {
                                                 <td className="text-center  p-1 py-1 flex items-center justify-center"><img src={item.image}
                                                     className="h-[clamp(40px,10.6vw,80px)] w-[clamp(40px,10.6vw,80px)]" alt="" /></td>
                                                 {
-                                                    item.isHalf ? <td className="text-center p-1 font-semibold leading-[16px] text-[14px]">{item.title}<span className='text-[13px] text-gray-400'> Half</span></td> :
+                                                    item.isHalf ? <td className="text-center p-1 font-semibold leading-[16px] text-[14px]">{item.title}<span className='text-[13px] text-green-700 font-bold '> <br />Half</span></td> :
                                                         <td className="text-center  p-1 font-semibold leading-[16px] text-[14px]">{item.title}</td>
                                                 }
 
