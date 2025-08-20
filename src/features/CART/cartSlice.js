@@ -2,11 +2,13 @@ import {
     createSlice,
     nanoid
 } from "@reduxjs/toolkit";
+import { menuData } from "../../menu";
 
 const initialState = {
     carts: [],
     totalprice: 0,
-    quantity: 0
+    quantity: 0,
+    recent_visited_category: Object.keys(menuData)[0]
     // console.log(carts);
 }
 
@@ -62,6 +64,9 @@ export const cartSlice = createSlice({
         },
         updateTotalPrice: (state, action) => {
             state.totalprice = action.payload
+        },
+        updateRecentVisitedCategory: (state, action) => {
+            state.recent_visited_category = action.payload
         }
     }
 })
@@ -70,7 +75,8 @@ export const {
     addToCart,
     removeFromCart,
     updateQuantity,
-    updateTotalPrice
+    updateTotalPrice,
+    updateRecentVisitedCategory
 } = cartSlice.actions;
 export default cartSlice.reducer;
 

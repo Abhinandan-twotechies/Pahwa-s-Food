@@ -7,7 +7,7 @@ import { addToCart, removeFromCart, updateQuantity } from '../features/CART/cart
 
 
 function Foods() {
-    const { filterdMenu, setIsBottomSheet, setItemToCusTomize } = useContext(MyContext);
+    const { filterdMenu, setIsBottomSheet, setItemToCusTomize , inputRef} = useContext(MyContext);
     const carts = useSelector(state => state.carts)
 
 
@@ -78,10 +78,11 @@ function Foods() {
 
 
     return (
-        <div className="mt-5 mb-5 mx-2 pb-10">
+        <>
+        <div className="mt-5  mx-2 pb-10">
             <p className="text-primaryText font-semibold text-xl mb-2">Popular</p>
 
-            <div className='bg-[#fcfcfc] w-full h-auto overflow-scroll mb-10 rounded-2xl  no-scrollbar'>
+            <div  ref={inputRef} className='bg-[#fcfcfc] w-full h-auto overflow-scroll mb-10  rounded-2xl  no-scrollbar'>
                 <div className='bg-[wheat] flex justify-between mb-5 z-10 p-2 sticky top-0'>
                     <div className='text-lightBlack font-bold'>
                         <p className='ml-5 text-lg'>{filterdMenu?.name}</p>
@@ -159,8 +160,8 @@ function Foods() {
 
                                             return (
                                                 <div className='flex items-center justify-evenly ml-2 w-[65%]'>
-                                                    <p className='text-xs text-gray-400'>Half: {halfQty}</p>
-                                                    <p className='text-xs text-gray-400'>Full: {fullQty}</p>
+                                                    <p className='text-xs text-green-800'>Half: <span className='font-semibold'>{halfQty}</span></p>
+                                                    <p className='text-xs text-green-800'>Full: <span className='font-semibold'>{fullQty}</span></p>
                                                 </div>
                                             );
                                         })() : null}
@@ -242,6 +243,7 @@ function Foods() {
                 }
             </div>
         </div>
+        </>
     );
 }
 
