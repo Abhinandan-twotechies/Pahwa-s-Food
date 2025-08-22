@@ -3,7 +3,7 @@ import { MdDelete } from "react-icons/md";
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { removeFromCart, updateQuantity, updateTotalPrice } from '../features/CART/cartSlice';
+import { removeFromCart, updateQuantity, updateTotalPrice } from '../redux/reducer/cartReducer'; // Adjust the import path as necessary
 import { FaIndianRupeeSign } from 'react-icons/fa6';
 import { GrFormAdd, GrFormSubtract } from "react-icons/gr";
 import logoDark from '../assets/logo-dark.png'
@@ -14,7 +14,9 @@ import { FaCartShopping } from 'react-icons/fa6';
 function Cart() {
 
     const dispatch = useDispatch();
-    const carts = useSelector(state => state.carts)
+    // const carts = useSelector(state => state.carts)
+  const carts = useSelector(state => state.carts.carts);
+
     const totalPrice = useSelector(state => state.totalprice)
 
     // function to increase Quantity  

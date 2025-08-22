@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import { MyContext } from '../App';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateRecentVisitedCategory } from '../features/CART/cartSlice';
+import { updateRecentVisitedCategory } from '../redux/reducer/cartReducer'; // Adjust the import path as necessary
 
 function Categories() {
     const dispatch = useDispatch();
 
     const { menuData, setCategory, FocusInput } = useContext(MyContext);
-    const recentVisitedCategory = useSelector(state => state.recent_visited_category)
+    const recentVisitedCategory = useSelector(state => state.carts.recent_visited_category)
     // console.log(recentVisitedCategory);
 
 
@@ -30,6 +30,7 @@ function Categories() {
                                     onChange={() => {
                                         setCategory(categoryName)
                                         dispatch(updateRecentVisitedCategory(categoryName))
+                                        // console.log(categoryName);
                                         FocusInput();
                                     }}
                                     className={`${recentVisitedCategory === categoryName ? 'peer hidden' : 'peer hidden'}`}

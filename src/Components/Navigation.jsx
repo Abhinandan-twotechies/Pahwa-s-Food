@@ -1,15 +1,17 @@
-import React, { useContext } from 'react'
 import { FaHouse } from 'react-icons/fa6';
-import { FaClock } from 'react-icons/fa6';
 import { FaIndianRupeeSign } from 'react-icons/fa6';
 import { FaCartShopping } from 'react-icons/fa6';
-import { Outlet, Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useSelector} from 'react-redux';
 import logoDark from '../assets/logo-dark.png'
 
 function Navigation() {
-    const carts = useSelector(state => state.carts)
-    const totalPrice = useSelector(state => state.totalprice)
+    // const carts = useSelector(state => state.carts)
+       const carts = useSelector(state => state.carts.carts);
+
+    const totalPrice = useSelector(state => state.carts.totalprice)
+    // console.log(totalPrice);
+    
 
 
     return (

@@ -3,12 +3,13 @@ import { GrFormAdd, GrFormSubtract } from "react-icons/gr";
 import { FaIndianRupeeSign } from 'react-icons/fa6';
 import { MyContext } from '../App';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, removeFromCart, updateQuantity } from '../features/CART/cartSlice';
+import { addToCart, removeFromCart, updateQuantity } from '../redux/reducer/cartReducer'; // Adjust the import path as necessary
 
 
 function Foods() {
     const { filterdMenu, setIsBottomSheet, setItemToCusTomize , inputRef} = useContext(MyContext);
-    const carts = useSelector(state => state.carts)
+    // const carts = useSelector(state => state.carts)
+    const carts = useSelector(state => state.carts.carts);
 
 
     const [isAll, setIsAll] = useState(true);

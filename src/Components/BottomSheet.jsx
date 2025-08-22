@@ -5,12 +5,12 @@ import { RiSubtractFill } from 'react-icons/ri';
 import { useContext } from 'react';
 import { MyContext } from '../App';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../features/CART/cartSlice';
+import { addToCart } from '../redux/reducer/cartReducer'; // Adjust the import path as necessary
 import { FaIndianRupeeSign } from 'react-icons/fa6';
 import { useSelector } from 'react-redux';
 
 function BottomSheet() {
-    const carts = useSelector(state => state.carts)
+    const carts = useSelector(state => state.carts.carts);
     const { setIsBottomSheet, isBottomSheet, itemToCustomize, filterdMenu } = useContext(MyContext)
     const [qty, setQty] = useState(1);
     // const [itemQty , setItemQty] = useState(1);
